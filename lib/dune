@@ -1,0 +1,5 @@
+(library
+  (name lwt_to_eio_lib)
+  (public_name lwt_to_eio.lib)
+  (libraries ppxlib)
+  (preprocess (pps ppxlib.metaquot)))

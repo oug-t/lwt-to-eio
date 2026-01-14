@@ -1,0 +1,53 @@
+(lang dune 3.20)
+(name lwt_to_eio)
+(sections (lib .) (libexec .) (bin ../../bin) (doc ../../doc/lwt_to_eio))
+(files
+ (lib
+  (META
+   dune-package
+   lib/lwt_to_eio_lib.a
+   lib/lwt_to_eio_lib.cma
+   lib/lwt_to_eio_lib.cmi
+   lib/lwt_to_eio_lib.cmt
+   lib/lwt_to_eio_lib.cmx
+   lib/lwt_to_eio_lib.cmxa
+   lib/lwt_to_eio_lib.ml
+   lib/lwt_to_eio_lib__Migrate.cmi
+   lib/lwt_to_eio_lib__Migrate.cmt
+   lib/lwt_to_eio_lib__Migrate.cmx
+   lib/lwt_to_eio_lib__Rules.cmi
+   lib/lwt_to_eio_lib__Rules.cmt
+   lib/lwt_to_eio_lib__Rules.cmx
+   lib/migrate.ml
+   lib/rules.ml))
+ (libexec (lib/lwt_to_eio_lib.cmxs))
+ (bin (lwt-to-eio))
+ (doc (LICENSE README.md)))
+(library
+ (name lwt_to_eio.lib)
+ (kind normal)
+ (archives (byte lib/lwt_to_eio_lib.cma) (native lib/lwt_to_eio_lib.cmxa))
+ (plugins (byte lib/lwt_to_eio_lib.cma) (native lib/lwt_to_eio_lib.cmxs))
+ (native_archives lib/lwt_to_eio_lib.a)
+ (requires ppxlib.ast ppxlib)
+ (main_module_name Lwt_to_eio_lib)
+ (modes byte native)
+ (modules
+  (wrapped
+   (group
+    (alias
+     (obj_name lwt_to_eio_lib)
+     (visibility public)
+     (kind alias)
+     (source (path Lwt_to_eio_lib) (impl (path lib/lwt_to_eio_lib.ml-gen))))
+    (name Lwt_to_eio_lib)
+    (modules
+     (module
+      (obj_name lwt_to_eio_lib__Migrate)
+      (visibility public)
+      (source (path Migrate) (impl (path lib/migrate.ml))))
+     (module
+      (obj_name lwt_to_eio_lib__Rules)
+      (visibility public)
+      (source (path Rules) (impl (path lib/rules.ml))))))
+   (wrapped true))))

@@ -1,0 +1,9 @@
+package "lib" (
+  directory = "lib"
+  description = ""
+  requires = "ppxlib ppxlib.ast"
+  archive(byte) = "lwt_to_eio_lib.cma"
+  archive(native) = "lwt_to_eio_lib.cmxa"
+  plugin(byte) = "lwt_to_eio_lib.cma"
+  plugin(native) = "lwt_to_eio_lib.cmxs"
+)

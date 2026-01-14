@@ -1,0 +1,29 @@
+lib: [
+  "_build/install/default/lib/lwt_to_eio/META"
+  "_build/install/default/lib/lwt_to_eio/dune-package"
+  "_build/install/default/lib/lwt_to_eio/lib/lwt_to_eio_lib.a" {"lib/lwt_to_eio_lib.a"}
+  "_build/install/default/lib/lwt_to_eio/lib/lwt_to_eio_lib.cma" {"lib/lwt_to_eio_lib.cma"}
+  "_build/install/default/lib/lwt_to_eio/lib/lwt_to_eio_lib.cmi" {"lib/lwt_to_eio_lib.cmi"}
+  "_build/install/default/lib/lwt_to_eio/lib/lwt_to_eio_lib.cmt" {"lib/lwt_to_eio_lib.cmt"}
+  "_build/install/default/lib/lwt_to_eio/lib/lwt_to_eio_lib.cmx" {"lib/lwt_to_eio_lib.cmx"}
+  "_build/install/default/lib/lwt_to_eio/lib/lwt_to_eio_lib.cmxa" {"lib/lwt_to_eio_lib.cmxa"}
+  "_build/install/default/lib/lwt_to_eio/lib/lwt_to_eio_lib.ml" {"lib/lwt_to_eio_lib.ml"}
+  "_build/install/default/lib/lwt_to_eio/lib/lwt_to_eio_lib__Migrate.cmi" {"lib/lwt_to_eio_lib__Migrate.cmi"}
+  "_build/install/default/lib/lwt_to_eio/lib/lwt_to_eio_lib__Migrate.cmt" {"lib/lwt_to_eio_lib__Migrate.cmt"}
+  "_build/install/default/lib/lwt_to_eio/lib/lwt_to_eio_lib__Migrate.cmx" {"lib/lwt_to_eio_lib__Migrate.cmx"}
+  "_build/install/default/lib/lwt_to_eio/lib/lwt_to_eio_lib__Rules.cmi" {"lib/lwt_to_eio_lib__Rules.cmi"}
+  "_build/install/default/lib/lwt_to_eio/lib/lwt_to_eio_lib__Rules.cmt" {"lib/lwt_to_eio_lib__Rules.cmt"}
+  "_build/install/default/lib/lwt_to_eio/lib/lwt_to_eio_lib__Rules.cmx" {"lib/lwt_to_eio_lib__Rules.cmx"}
+  "_build/install/default/lib/lwt_to_eio/lib/migrate.ml" {"lib/migrate.ml"}
+  "_build/install/default/lib/lwt_to_eio/lib/rules.ml" {"lib/rules.ml"}
+]
+libexec: [
+  "_build/install/default/lib/lwt_to_eio/lib/lwt_to_eio_lib.cmxs" {"lib/lwt_to_eio_lib.cmxs"}
+]
+bin: [
+  "_build/install/default/bin/lwt-to-eio"
+]
+doc: [
+  "_build/install/default/doc/lwt_to_eio/LICENSE"
+  "_build/install/default/doc/lwt_to_eio/README.md"
+]
