@@ -62,8 +62,11 @@ let fetch_user_data id =
 Currently, the tool prints transformed code to stdout.
 
 ```bash
-# Run on a single file
-dune exec lwt-to-eio -- src/my_file.ml > src/my_file_migrated.ml
+# Default: Migrate to Eio
+dune exec lwt-to-eio -- file.ml
+
+# Option: Migrate to Lwt 6.0 Direct Style (preserve Lwt)
+dune exec lwt-to-eio -- --target direct file.ml
 ```
 
 The original file is never modified.
