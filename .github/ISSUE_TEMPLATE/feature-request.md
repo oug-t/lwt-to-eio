@@ -1,15 +1,8 @@
 ---
-
-## ✨ Feature / Pattern Request (`feature_request.md`)
-
-```markdown
----
-
 name: ✨ Feature request
 about: Request support for a new Lwt pattern or migration rule
 title: "[Feature]: "
 labels: enhancement
-
 ---
 
 ## Lwt pattern to support
