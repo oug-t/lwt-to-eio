@@ -1,4 +1,4 @@
-# dune exec lwt-to-eio -- test/cases/bind_test.ml
+# dune exec lwt-to-eio -- test/cases/return_test.ml
 # OCAMLPARAM: unset
 # Shared cache: enabled-except-user-rules
 # Shared cache location: /Users/tommy/.cache/dune/db
@@ -13,8 +13,8 @@
 #  ; build_dir = In_build_dir "default"
 #  ; instrument_with = []
 #  }
-$ /Users/tommy/.opam/default/bin/ocamlc.opt -config > /var/folders/t2/n8d9p1b16n1frp03knql3qlm0000gn/T/dune_3b2caa_output
-$ (cd _build/.sandbox/aaa51e10d9238e6065ed7ae5f816cf72/default && .ppx/59d62b49073770fa4259d723432e073f/ppx.exe --cookie 'library-name="lwt_to_eio_lib"' -o lib/migrate.pp.ml --impl lib/migrate.ml -corrected-suffix .ppx-corrected -diff-cmd - -dump-ast)
+$ /Users/tommy/.opam/default/bin/ocamlc.opt -config > /var/folders/t2/n8d9p1b16n1frp03knql3qlm0000gn/T/dune_85afac_output
+$ (cd _build/.sandbox/a34519442d32f012f77ec290679e33bc/default && .ppx/59d62b49073770fa4259d723432e073f/ppx.exe --cookie 'library-name="lwt_to_eio_lib"' -o lib/migrate.pp.ml --impl lib/migrate.ml -corrected-suffix .ppx-corrected -diff-cmd - -dump-ast)
 $ (cd _build/default && /Users/tommy/.opam/default/bin/ocamldep.opt -modules -impl lib/migrate.pp.ml) > _build/default/lib/.lwt_to_eio_lib.objs/lwt_to_eio_lib__Migrate.impl.d
 $ (cd _build/default && /Users/tommy/.opam/default/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -bin-annot -bin-annot-occurrences -I lib/.lwt_to_eio_lib.objs/byte -I /Users/tommy/.opam/default/lib/ocaml-compiler-libs/common -I /Users/tommy/.opam/default/lib/ocaml-compiler-libs/shadow -I /Users/tommy/.opam/default/lib/ocaml/compiler-libs -I /Users/tommy/.opam/default/lib/ppx_derivers -I /Users/tommy/.opam/default/lib/ppxlib -I /Users/tommy/.opam/default/lib/ppxlib/ast -I /Users/tommy/.opam/default/lib/ppxlib/astlib -I /Users/tommy/.opam/default/lib/ppxlib/print_diff -I /Users/tommy/.opam/default/lib/ppxlib/stdppx -I /Users/tommy/.opam/default/lib/ppxlib/traverse_builtins -I /Users/tommy/.opam/default/lib/sexplib0 -I /Users/tommy/.opam/default/lib/stdlib-shims -no-alias-deps -opaque -open Lwt_to_eio_lib -o lib/.lwt_to_eio_lib.objs/byte/lwt_to_eio_lib__Migrate.cmo -c -impl lib/migrate.pp.ml)
 $ (cd _build/default && /Users/tommy/.opam/default/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -bin-annot -bin-annot-occurrences -I bin/.main.eobjs/byte -I /Users/tommy/.opam/default/lib/cmdliner -I /Users/tommy/.opam/default/lib/ocaml-compiler-libs/common -I /Users/tommy/.opam/default/lib/ocaml-compiler-libs/shadow -I /Users/tommy/.opam/default/lib/ocaml/compiler-libs -I /Users/tommy/.opam/default/lib/ppx_derivers -I /Users/tommy/.opam/default/lib/ppxlib -I /Users/tommy/.opam/default/lib/ppxlib/ast -I /Users/tommy/.opam/default/lib/ppxlib/astlib -I /Users/tommy/.opam/default/lib/ppxlib/print_diff -I /Users/tommy/.opam/default/lib/ppxlib/stdppx -I /Users/tommy/.opam/default/lib/ppxlib/traverse_builtins -I /Users/tommy/.opam/default/lib/sexplib0 -I /Users/tommy/.opam/default/lib/stdlib-shims -I lib/.lwt_to_eio_lib.objs/byte -no-alias-deps -opaque -o bin/.main.eobjs/byte/dune__exe__Main.cmi -c -intf bin/main.mli)

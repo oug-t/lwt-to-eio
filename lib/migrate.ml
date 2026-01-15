@@ -28,6 +28,10 @@ class lwt_mapper = object (self)
         [%e self#expression body]
       ]
 
+    | [%expr Lwt.return [%e? v]] ->
+      Printf.printf " [+] Removing Lwt.return\n";
+      self#expression v
+
     | _ -> super#expression expr
 end
 

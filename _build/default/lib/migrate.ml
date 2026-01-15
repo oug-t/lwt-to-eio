@@ -1,6 +1,6 @@
 open Ppxlib
 
-class lwt_mapper = object (self) (* <-- enable 'self' to recurse *)
+class lwt_mapper = object (self)
   inherit Ast_traverse.map as super
 
   method! expression expr =
@@ -14,21 +14,23 @@ class lwt_mapper = object (self) (* <-- enable 'self' to recurse *)
       Printf.printf "  [+] Rewriting Lwt_unix.sleep\n";
       [%expr Eio.Time.sleep env#clock [%e self#expression time]]
 
-    (* RULE 3: Recursive Rewrite for Lwt.bind *)
     | [%expr Lwt.bind [%e? promise] (fun [%p? arg] -> [%e? body])] ->
       Printf.printf "  [+] Rewriting Lwt.bind\n";
       [%expr 
         let [%p arg] = Lwt_eio.Promise.await_lwt [%e self#expression promise] in 
-        [%e self#expression body] (* <--- CRITICAL FIX: Recurse here! *)
+        [%e self#expression body]
       ]
 
-    (* RULE 4: Recursive Rewrite for >>= *)
     | [%expr [%e? promise] >>= (fun [%p? arg] -> [%e? body])] ->
       Printf.printf "  [+] Rewriting >>=\n";
       [%expr 
         let [%p arg] = Lwt_eio.Promise.await_lwt [%e self#expression promise] in 
-        [%e self#expression body] (* <--- CRITICAL FIX: Recurse here! *)
+        [%e self#expression body]
       ]
+
+    | [%expr Lwt.return [%e? v]] ->
+      Printf.printf " [+] Removing Lwt.return\n";
+      self#expression v
 
     | _ -> super#expression expr
 end
