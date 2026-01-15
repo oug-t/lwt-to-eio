@@ -1,0 +1,6 @@
+_build/
+_opam/
+dist/
+node_modules/
+*.exe
+

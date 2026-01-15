@@ -1,0 +1,22 @@
+{
+  "name": "lwt-to-eio",
+  "version": "1.0.0",
+  "description": "Practical migration tooling for moving from Lwt to Eio (OCaml 5).",
+  "private": true,
+  "scripts": {
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/oug-t/lwt-to-eio.git"
+  },
+  "bugs": {
+    "url": "https://github.com/oug-t/lwt-to-eio/issues"
+  },
+  "homepage": "https://github.com/oug-t/lwt-to-eio#readme",
+  "license": "ISC",
+  "devDependencies": {
+    "prettier": "^3.8.0"
+  }
+}
