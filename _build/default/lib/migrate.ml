@@ -1,26 +1,35 @@
 open Ppxlib
 
-(* REMOVED: (_ : Ast_traverse.map) *)
-class lwt_mapper = object
+class lwt_mapper = object (self) (* <-- enable 'self' to recurse *)
   inherit Ast_traverse.map as super
 
   method! expression expr =
-    (* We need 'loc' for the [%expr] macro to work *)
     let loc = expr.pexp_loc in
-
     match expr with
-    (* RULE: Lwt_list.map_p -> Eio.Fiber.List.map *)
     | [%expr Lwt_list.map_p [%e? fn] [%e? lst]] ->
       Printf.printf "  [+] Rewriting Lwt_list.map_p\n";
-      [%expr Eio.Fiber.List.map [%e fn] [%e lst]]
+      [%expr Eio.Fiber.List.map [%e self#expression fn] [%e self#expression lst]]
 
-    (* RULE: Lwt_unix.sleep -> Eio.Time.sleep *)
     | [%expr Lwt_unix.sleep [%e? time]] ->
       Printf.printf "  [+] Rewriting Lwt_unix.sleep\n";
-      (* We assume 'env' is available in the user's scope *)
-      [%expr Eio.Time.sleep env#clock [%e time]]
+      [%expr Eio.Time.sleep env#clock [%e self#expression time]]
 
-    (* Fallback: Keep everything else the same *)
+    (* RULE 3: Recursive Rewrite for Lwt.bind *)
+    | [%expr Lwt.bind [%e? promise] (fun [%p? arg] -> [%e? body])] ->
+      Printf.printf "  [+] Rewriting Lwt.bind\n";
+      [%expr 
+        let [%p arg] = Lwt_eio.Promise.await_lwt [%e self#expression promise] in 
+        [%e self#expression body] (* <--- CRITICAL FIX: Recurse here! *)
+      ]
+
+    (* RULE 4: Recursive Rewrite for >>= *)
+    | [%expr [%e? promise] >>= (fun [%p? arg] -> [%e? body])] ->
+      Printf.printf "  [+] Rewriting >>=\n";
+      [%expr 
+        let [%p arg] = Lwt_eio.Promise.await_lwt [%e self#expression promise] in 
+        [%e self#expression body] (* <--- CRITICAL FIX: Recurse here! *)
+      ]
+
     | _ -> super#expression expr
 end
 
